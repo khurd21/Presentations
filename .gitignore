@@ -2,6 +2,7 @@
 .cache/
 .idea/
 .vscode/
+build/
 
 # Prerequisites
 *.d

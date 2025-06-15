@@ -45,7 +45,7 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QListView" name="previewList">
+     <widget class="presentations::SlidePreviewListView" name="previewList">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -58,16 +58,40 @@
         <height>0</height>
        </size>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QListView {
+	show-decoration-selected: 1;
+}
+QListView::item {
+	border: 1px solid transparent;
+}</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
       </property>
       <property name="resizeMode">
-       <enum>QListView::ResizeMode::Fixed</enum>
+       <enum>QListView::ResizeMode::Adjust</enum>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="presentations::CanvasView" name="graphicsView"/>
+     <widget class="presentations::CanvasView" name="graphicsView">
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -77,6 +101,11 @@
    <class>presentations::CanvasView</class>
    <extends>QGraphicsView</extends>
    <header location="global">presentations/CanvasView.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>presentations::SlidePreviewListView</class>
+   <extends>QListView</extends>
+   <header location="global">presentations/SlidePreviewListView.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -20,8 +20,8 @@ CanvasView::CanvasView(QWidget* parent) : QGraphicsView(parent) {
 
     setMouseTracking(true);
     setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-    setDragMode(QGraphicsView::NoDrag);
-    setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
+    setDragMode(NoDrag);
+    setTransformationAnchor(AnchorUnderMouse);
     setAttribute(Qt::WA_AcceptTouchEvents);
     viewport()->setAttribute(Qt::WA_AcceptTouchEvents);
     grabGesture(Qt::GestureType::PinchGesture);
@@ -34,11 +34,16 @@ void CanvasView::setSlideWidget(QWidget* slideWidget) {
         m_scene = new QGraphicsScene(this);
         setScene(m_scene);
     }
+
+    if (m_proxy && m_proxy->widget() == slideWidget) {
+        return;
+    }
     if (m_proxy) {
+        m_proxy->setWidget(nullptr);
         m_scene->removeItem(m_proxy);
         m_proxy->deleteLater();
+        m_proxy = nullptr;
     }
-
     m_proxy = m_scene->addWidget(slideWidget);
     const auto bounds{m_proxy->boundingRect()};
     m_proxy->setPos(-bounds.width() / 2, -bounds.height() / 2);
@@ -46,6 +51,8 @@ void CanvasView::setSlideWidget(QWidget* slideWidget) {
     m_proxy->setCacheMode(QGraphicsItem::DeviceCoordinateCache);
     centerOn(m_proxy);
 }
+
+QWidget* CanvasView::slideWidget() const { return m_proxy ? m_proxy->widget() : nullptr; }
 
 double CanvasView::zoomLevel() const { return m_proxy ? m_proxy->scale() : 1.0; }
 

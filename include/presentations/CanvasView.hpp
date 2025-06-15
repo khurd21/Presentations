@@ -16,6 +16,7 @@ class CanvasView final : public QGraphicsView {
     explicit CanvasView(QWidget* parent = nullptr);
 
     void setSlideWidget(QWidget* slideWidget);
+    QWidget* slideWidget() const;
 
     double zoomLevel() const;
     void setZoomLevel(double zoomLevel);
