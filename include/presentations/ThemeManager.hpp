@@ -19,6 +19,9 @@ class ThemeManager final : public QObject {
     void setTheme(const std::string& theme);
     std::string getTheme() const;
 
+  private slots:
+    void onColorSchemeChanged(const Qt::ColorScheme& colorScheme);
+
   private:
     std::vector<QJsonObject> m_themeData;
     std::string m_theme;

@@ -14,5 +14,21 @@
       "toolTipBase": "#333333",
       "toolTipText": "#FFFFFF"
     }
+  },
+  {
+    "name": "Light",
+    "palette": {
+      "window": "#F5F5F7",
+      "windowText": "#000000",
+      "base": "#ADACAC",
+      "alternateBase": "#F0F0F0",
+      "text": "#202020",
+      "button": "#E0E0E0",
+      "buttonText": "#000000",
+      "highlight": "#3D6D96",
+      "highlightedText": "#FFFFFF",
+      "toolTipBase": "#FFFFFF",
+      "toolTipText": "#000000"
+    }
   }
 ]

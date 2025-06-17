@@ -3,15 +3,18 @@
 
 #include <QApplication>
 #include <QDir>
+#include <QGuiApplication>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonParseError>
 #include <QPalette>
+#include <QStyleHints>
 
 #include <array>
 #include <stdexcept>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 namespace {
@@ -92,6 +95,7 @@ QPalette applyTheme(const QJsonObject& theme) {
     palette.setColor(QPalette::ToolTipText, getColor(paletteObj, "toolTipText"));
     QApplication::setPalette(palette);
 
+    qDebug() << "Theme: " << theme["name"].toString();
     qDebug() << "Window: " << palette.color(QPalette::Window).name();
     qDebug() << "WindowText: " << palette.color(QPalette::WindowText).name();
     qDebug() << "Base: " << palette.color(QPalette::Base).name();
@@ -109,12 +113,9 @@ QPalette applyTheme(const QJsonObject& theme) {
 } // namespace
 
 namespace presentations {
-
 ThemeManager::ThemeManager(QObject* parent) : QObject(parent), m_themeData(findThemes()) {
-    if (!m_themeData.empty()) {
-        m_theme = m_themeData[0]["name"].toString().toStdString();
-        setTheme(m_theme);
-    }
+    onColorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
+    connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &ThemeManager::onColorSchemeChanged);
 }
 
 ThemeManager& ThemeManager::instance() {
@@ -140,5 +141,26 @@ void ThemeManager::setTheme(const std::string& theme) {
 }
 
 std::string ThemeManager::getTheme() const { return m_theme; }
+
+void ThemeManager::onColorSchemeChanged(const Qt::ColorScheme& colorScheme) {
+    const std::unordered_map<Qt::ColorScheme, std::string> colorSchemeToTheme{
+        {Qt::ColorScheme::Dark, "Dark"},
+        {Qt::ColorScheme::Light, "Light"},
+        {Qt::ColorScheme::Unknown, "Dark"},
+    };
+
+    if (!colorSchemeToTheme.contains(colorScheme)) {
+        qWarning() << "Unknown color scheme:" << colorScheme;
+        return;
+    }
+
+    for (const auto& theme : m_themeData) {
+        if (const auto& themeName{theme["name"].toString().toStdString()}; themeName == colorSchemeToTheme.at(colorScheme)) {
+            m_theme = themeName;
+            setTheme(m_theme);
+            break;
+        }
+    }
+}
 
 } // namespace presentations

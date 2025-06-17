@@ -1,8 +1,13 @@
+#include "presentations/ThemeManager.hpp"
+
+#include <QGuiApplication>
 #include <presentations/SlidePreviewDelegate.hpp>
 #include <presentations/SlidePreviewListView.hpp>
 
+#include <QApplication>
 #include <QPointer>
 #include <QStandardItem>
+#include <QStyleHints>
 #include <QWidget>
 
 namespace presentations {
@@ -17,6 +22,7 @@ SlidePreviewListView::SlidePreviewListView(QWidget* parent) : QListView(parent) 
         const auto widget{m_model.index(index.row(), index.column()).data(WidgetTypeRole).template value<QPointer<QWidget>>()};
         emit slideSelected(widget);
     });
+    connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [this] { setPalette(QApplication::palette()); });
 }
 
 void SlidePreviewListView::addSlide(const int number, QWidget* previewWidget) {
