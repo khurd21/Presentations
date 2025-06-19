@@ -1,0 +1,64 @@
+{
+  "specialCharacters": {
+    "title": "#",
+    "subtitle": "##",
+    "subsubtitle": "###",
+    "bulletPoint": "-",
+    "modifiersStart": "---",
+    "modifiersEnd": "---"
+  },
+  "elements": {
+    "title": {
+      "font-size": 56,
+      "font-weight": "bold",
+      "justify": "left"
+    },
+    "subtitle": {
+      "font-size": 48,
+      "font-weight": "bold",
+      "justify": "left"
+    },
+    "subsubtitle": {
+      "font-size": 32,
+      "font-weight": "bold",
+      "justify": "left"
+    },
+    "bulletPoint": {
+      "font-size": 16,
+      "font-weight": "normal",
+      "justify": "left"
+    },
+    "text": {
+      "font-size": 16,
+      "font-weight": "normal",
+      "justify": "left"
+    }
+  },
+  "modifiers": {
+    "font-size": {
+      "type": "int",
+      "appliesTo": [
+        "title",
+        "subtitle",
+        "subsubtitle",
+        "bulletPoint",
+        "text"
+      ]
+    },
+    "justify": {
+      "type": "enum",
+      "values": [
+        "left",
+        "center",
+        "right"
+      ],
+      "appliesTo": [
+        "title",
+        "subtitle",
+        "subsubtitle",
+        "bulletPoint",
+        "text"
+      ]
+    }
+  }
+}

@@ -18,6 +18,11 @@ set(sources
         src/SlidePreviewDelegate.cpp
         src/SlidePreviewListView.cpp
         src/ThemeManager.cpp
+        src/CodeEditor.cpp
+        src/PresentationManager.cpp
+        src/CodeThemeConfig.cpp
+        src/CodeParser.cpp
+        src/ElementRenderer.cpp
 )
 
 set(includes
@@ -27,6 +32,12 @@ set(includes
         include/presentations/SlidePreviewDelegate.hpp
         include/presentations/SlidePreviewListView.hpp
         include/presentations/ThemeManager.hpp
+        include/presentations/CodeEditor.hpp
+        include/presentations/PresentationManager.hpp
+        include/presentations/CodeThemeConfig.hpp
+        include/presentations/ParsedElement.hpp
+        include/presentations/CodeParser.hpp
+        include/presentations/ElementRenderer.hpp
 )
 
 set(ui
@@ -34,14 +45,14 @@ set(ui
 )
 
 set(resources
-        resources/themes/themes.json
-        resources/themes/themes.qrc
+        resources/themes.json
+        resources/resources.qrc
 )
 
 qt_add_executable(Presentations ${sources} ${includes} ${ui} ${resources})
 qt_add_resources(Presentations
         FILES
-        resources/themes/themes.qrc
+        resources/resources.qrc
 )
 
 target_include_directories(Presentations PRIVATE include)
