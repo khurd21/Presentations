@@ -2,6 +2,8 @@
 
 #include <QGraphicsProxyWidget>
 #include <QGraphicsView>
+#include <QLayout>
+#include <QLayoutItem>
 #include <QPainter>
 #include <QTimer>
 #include <QWheelEvent>
@@ -28,6 +30,29 @@ CanvasView::CanvasView(QWidget* parent) : QGraphicsView(parent) {
 
     connect(m_zoomAnimation, &QPropertyAnimation::finished, [this] { m_isAnimating = false; });
 }
+void CanvasView::clearSlideContent() {
+    if (m_proxy) {
+        if (const auto widget = m_proxy->widget()) {
+            if (const auto layout = widget->layout()) {
+                const QLayoutItem* item{};
+                while ((item = layout->takeAt(0))) {
+                    delete item->widget();
+                    delete item;
+                }
+            }
+        }
+    }
+}
+
+void CanvasView::addSlideContent(QWidget* widget) {
+    if (m_proxy) {
+        if (const auto slide = m_proxy->widget()) {
+            if (const auto layout = slide->layout()) {
+                layout->addWidget(widget);
+            }
+        }
+    }
+}
 
 void CanvasView::setSlideWidget(QWidget* slideWidget) {
     if (!m_scene) {
@@ -44,6 +69,7 @@ void CanvasView::setSlideWidget(QWidget* slideWidget) {
         m_proxy->deleteLater();
         m_proxy = nullptr;
     }
+
     m_proxy = m_scene->addWidget(slideWidget);
     const auto bounds{m_proxy->boundingRect()};
     m_proxy->setPos(-bounds.width() / 2, -bounds.height() / 2);

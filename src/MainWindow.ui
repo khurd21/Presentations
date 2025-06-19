@@ -58,7 +58,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QPlainTextEdit" name="plainTextEdit">
+     <widget class="presentations::CodeEditor" name="codeEditor">
       <property name="lineWrapMode">
        <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
       </property>
@@ -116,6 +116,11 @@ QListView::item {
    <class>presentations::SlidePreviewListView</class>
    <extends>QListView</extends>
    <header location="global">presentations/SlidePreviewListView.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>presentations::CodeEditor</class>
+   <extends>QPlainTextEdit</extends>
+   <header>presentations/CodeEditor.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

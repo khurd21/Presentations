@@ -10,8 +10,8 @@ namespace presentations {
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(std::make_unique<Ui::MainWindow>()) {
     m_ui->setupUi(this);
-    // If parented, it will not be able to embed the widget.
-    m_ui->graphicsView->setSlideWidget(new SlideWidget());
+    m_presentationManager.setCodeEditor(m_ui->codeEditor);
+    m_presentationManager.setCanvasView(m_ui->graphicsView);
 
     // TODO: This is just to be able to preview the slides.
     // TODO: Remove once there is support for adding slides in the UI.

@@ -1,8 +1,9 @@
 #ifndef PRESENTATIONS_MAIN_WINDOW_HPP
 #define PRESENTATIONS_MAIN_WINDOW_HPP
 
+#include <presentations/PresentationManager.hpp>
+
 #include <QMainWindow>
-#include <QStandardItemModel>
 #include <QWidget>
 
 #include <memory>
@@ -26,6 +27,7 @@ class MainWindow final : public QMainWindow {
 
   private:
     std::unique_ptr<Ui::MainWindow> m_ui;
+    PresentationManager m_presentationManager;
 };
 
 } // namespace presentations

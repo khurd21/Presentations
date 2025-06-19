@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/themes">
+        <file>themes.json</file>
+    </qresource>
+    <qresource prefix="/defaults">
+        <file>codeEditorDefaults.json</file>
+    </qresource>
+</RCC>

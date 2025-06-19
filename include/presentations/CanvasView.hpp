@@ -15,6 +15,8 @@ class CanvasView final : public QGraphicsView {
   public:
     explicit CanvasView(QWidget* parent = nullptr);
 
+    void clearSlideContent();
+    void addSlideContent(QWidget* widget);
     void setSlideWidget(QWidget* slideWidget);
     QWidget* slideWidget() const;
 
