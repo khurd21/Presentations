@@ -55,24 +55,39 @@ void SlidePreviewDelegate::paint(QPainter* painter, const QStyleOptionViewItem& 
 
     if (const auto canvas{index.data(SlidePreviewListView::WidgetTypeRole).value<QPointer<QWidget>>()}) {
         constexpr auto spacing{6};
-        const auto top{backgroundRect.top() + verticalMargin};
-        const auto bottom{backgroundRect.bottom() - verticalMargin};
+        constexpr auto imageMargin{4};
+        constexpr auto cornerRadius{16};
+
+        const auto top{backgroundRect.top() + verticalMargin + imageMargin};
+        const auto bottom{backgroundRect.bottom() - verticalMargin - imageMargin};
         const auto height{bottom - top};
         const auto numberWidth{metrics.horizontalAdvance("999")};
-        const auto left{backgroundRect.left() + marginLeft + numberWidth + spacing};
-        const auto right{backgroundRect.right() - spacing};
+        const auto left{backgroundRect.left() + marginLeft + numberWidth + spacing + imageMargin};
+        const auto right{backgroundRect.right() - spacing - imageMargin};
         const auto width{right - left};
-        const QRect imageRect(left, top, width, height);
+        const QRect imageRect{left, top, width, height};
+
         if (const auto preview{canvas->grab()}; !preview.isNull()) {
-            painter->drawPixmap(imageRect.topLeft(), preview);
+            const auto previewSize{preview.size()};
+            const auto previewAspect{static_cast<double>(previewSize.width()) / previewSize.height()};
+            const auto rectAspect{static_cast<double>(imageRect.width()) / imageRect.height()};
+            QSize fittedSize;
+            if (previewAspect > rectAspect) {
+                fittedSize = {imageRect.width(), static_cast<int>(imageRect.width() / previewAspect)};
+            } else {
+                fittedSize = {static_cast<int>(imageRect.height() * previewAspect), imageRect.height()};
+            }
+            const auto x{imageRect.left() + (imageRect.width() - fittedSize.width()) / 2};
+            const auto y{imageRect.top() + (imageRect.height() - fittedSize.height()) / 2};
+            const QRect aspectFitRect{x, y, fittedSize.width(), fittedSize.height()};
+            const auto scaledPreview{preview.scaled(fittedSize * 2, Qt::KeepAspectRatio, Qt::SmoothTransformation)};
+            painter->drawPixmap(aspectFitRect.topLeft(), scaledPreview);
         }
     }
 
     painter->restore();
 }
 
-QSize SlidePreviewDelegate::sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const {
-    return QSize(140, 110); // Wider items for better centering
-}
+QSize SlidePreviewDelegate::sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const { return QSize(100, 110); }
 
 } // namespace presentations
