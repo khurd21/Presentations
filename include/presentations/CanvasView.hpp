@@ -23,6 +23,9 @@ class CanvasView final : public QGraphicsView {
     double zoomLevel() const;
     void setZoomLevel(double zoomLevel);
 
+  signals:
+    void canvasContentChanged();
+
   protected:
     bool event(QEvent* event) override;
     void wheelEvent(QWheelEvent* event) override;

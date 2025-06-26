@@ -6,8 +6,10 @@
 
 #include <QApplication>
 #include <QPointer>
+#include <QScroller>
 #include <QStandardItem>
 #include <QStyleHints>
+#include <QWheelEvent>
 #include <QWidget>
 
 namespace presentations {
@@ -18,10 +20,6 @@ SlidePreviewListView::SlidePreviewListView(QWidget* parent) : QListView(parent) 
     setFrameShape(NoFrame);
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
-    connect(this, &QListView::clicked, [this](const QModelIndex& index) {
-        const auto widget{m_model.index(index.row(), index.column()).data(WidgetTypeRole).template value<QPointer<QWidget>>()};
-        emit slideSelected(widget);
-    });
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [this] { setPalette(QApplication::palette()); });
 }
 
@@ -35,10 +33,11 @@ void SlidePreviewListView::addSlide(const int number, QWidget* previewWidget) {
 
 void SlidePreviewListView::setCurrentSlide(const int index) {
     if (index >= 0 && index < m_model.rowCount()) {
-        selectionModel()->select(m_model.index(index, 0), QItemSelectionModel::ClearAndSelect);
-        scrollTo(m_model.index(index, 0));
+        const auto& modelIndex{m_model.index(index, 0)};
+        selectionModel()->select(modelIndex, QItemSelectionModel::ClearAndSelect);
+        scrollTo(modelIndex);
+        emit clicked(modelIndex);
     }
-    emit slideSelected(m_model.index(index, 0).data(WidgetTypeRole).value<QPointer<QWidget>>());
 }
 
 void SlidePreviewListView::handleCanvasUpdate(const int index) {
