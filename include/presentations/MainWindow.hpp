@@ -23,7 +23,8 @@ class MainWindow final : public QMainWindow {
     ~MainWindow() override;
 
   private slots:
-    void handleSlideSelection(QWidget* widget);
+    void onSlideSelection(const QModelIndex& index);
+    void onNewSlideMade(int slideNumber, QWidget* slideWidget) const;
 
   private:
     std::unique_ptr<Ui::MainWindow> m_ui;

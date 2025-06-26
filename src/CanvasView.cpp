@@ -49,6 +49,7 @@ void CanvasView::addSlideContent(QWidget* widget) {
         if (const auto slide = m_proxy->widget()) {
             if (const auto layout = slide->layout()) {
                 layout->addWidget(widget);
+                emit canvasContentChanged();
             }
         }
     }

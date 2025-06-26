@@ -19,9 +19,6 @@ class SlidePreviewListView final : public QListView {
         WidgetTypeRole = Qt::UserRole + 1,
     };
 
-  signals:
-    void slideSelected(QWidget* slide);
-
   private:
     void setCurrentSlide(int index);
 
