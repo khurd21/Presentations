@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(std::make_un
     m_presentationManager.setCanvasView(m_ui->graphicsView);
 
     connect(m_ui->previewList, &SlidePreviewListView::clicked, this, &MainWindow::onSlideSelection);
-    connect(m_ui->graphicsView, &CanvasView::canvasContentChanged, this, [this] { m_ui->previewList->update(); });
+    connect(m_ui->graphicsView, &CanvasView::canvasContentChanged, this, [this] { m_ui->previewList->viewport()->update(); });
     connect(m_ui->addSlideButton, &QPushButton::pressed, &m_presentationManager, &PresentationManager::onMakeNewSlide);
     connect(&m_presentationManager, &PresentationManager::newSlideMade, this, &MainWindow::onNewSlideMade);
 }
