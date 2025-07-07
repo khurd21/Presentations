@@ -6,6 +6,7 @@
 #include <presentations/SlideWidget.hpp>
 
 #include <QFile>
+#include <QSignalblocker>
 #include <QString>
 #include <QVBoxLayout>
 
@@ -29,6 +30,8 @@ void PresentationManager::onSlideNumberChanged(const int slideNumber) {
     }
     m_slideNumber = slideNumber;
     m_primaryCanvasView->setSlideWidget(m_slideWidgets.at(slideNumber));
+
+    QSignalBlocker blocker{m_primaryCodeEditor};
     m_primaryCodeEditor->setPlainText(m_codeEditorText.at(slideNumber));
 }
 

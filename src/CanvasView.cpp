@@ -79,8 +79,6 @@ void CanvasView::setSlideWidget(QWidget* slideWidget) {
     centerOn(m_proxy);
 }
 
-QWidget* CanvasView::slideWidget() const { return m_proxy ? m_proxy->widget() : nullptr; }
-
 double CanvasView::zoomLevel() const { return m_proxy ? m_proxy->scale() : 1.0; }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
