@@ -6,7 +6,7 @@
 #include <presentations/SlideWidget.hpp>
 
 #include <QFile>
-#include <QSignalblocker>
+#include <QSignalBlocker>
 #include <QString>
 #include <QVBoxLayout>
 
@@ -18,7 +18,7 @@ PresentationManager::PresentationManager(QObject* parent) : QObject(parent), m_c
 
 void PresentationManager::setCodeEditor(CodeEditor* editor) {
     m_primaryCodeEditor = editor;
-    connect(m_primaryCodeEditor, &CodeEditor::textChanged, this, &PresentationManager::onCodeChanged);
+    connect(m_primaryCodeEditor.get(), &CodeEditor::textChanged, this, &PresentationManager::onCodeChanged);
 }
 
 void PresentationManager::setCanvasView(CanvasView* view) { m_primaryCanvasView = view; }
