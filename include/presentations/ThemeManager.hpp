@@ -15,9 +15,9 @@ class ThemeManager final : public QObject {
     explicit ThemeManager(QObject* parent = nullptr);
     static ThemeManager& instance();
 
-    std::vector<std::string> getThemes() const;
+    [[nodiscard]] std::vector<std::string> getThemes() const;
     void setTheme(const std::string& theme);
-    std::string getTheme() const;
+    [[nodiscard]] std::string getTheme() const;
 
   private slots:
     void onColorSchemeChanged(const Qt::ColorScheme& colorScheme);
