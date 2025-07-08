@@ -11,7 +11,7 @@ class SlidePreviewDelegate final : public QStyledItemDelegate {
   public:
     explicit SlidePreviewDelegate(QObject* parent = nullptr);
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
+    [[nodiscard]] QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 };
 
 } // namespace presentations

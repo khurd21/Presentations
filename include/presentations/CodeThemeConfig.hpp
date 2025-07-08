@@ -12,12 +12,12 @@ namespace presentations {
 class CodeThemeConfig {
   public:
     void loadFromFile(QFile file);
-    bool isValid() const;
+    [[nodiscard]] bool isValid() const;
 
-    QString specialCharacterFor(const QString& type) const;
-    std::vector<std::pair<QString, QString>> specialCharacters() const;
-    QJsonObject defaultAttributesFor(const QString& type) const;
-    bool isModifierValidFor(const QString& modifier, const QString& type) const;
+    [[nodiscard]] QString specialCharacterFor(const QString& type) const;
+    [[nodiscard]] std::vector<std::pair<QString, QString>> specialCharacters() const;
+    [[nodiscard]] QJsonObject defaultAttributesFor(const QString& type) const;
+    [[nodiscard]] bool isModifierValidFor(const QString& modifier, const QString& type) const;
 
   private:
     void parse(const QJsonObject& json);

@@ -12,7 +12,7 @@ class CodeParser {
   public:
     explicit CodeParser(CodeThemeConfig& config);
 
-    std::vector<ParsedElement> parse(const QString& code) const;
+    [[nodiscard]] std::vector<ParsedElement> parse(const QString& code) const;
 
   private:
     CodeThemeConfig& m_config;
