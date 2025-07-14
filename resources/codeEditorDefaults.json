@@ -3,9 +3,9 @@
     "title": "#",
     "subtitle": "##",
     "subsubtitle": "###",
-    "bulletPoint": "-",
     "modifiersStart": "---",
-    "modifiersEnd": "---"
+    "modifiersEnd": "---",
+    "bulletPoint": "-"
   },
   "elements": {
     "title": {

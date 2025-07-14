@@ -1,6 +1,8 @@
 #ifndef PRESENTATIONS_PARSED_ELEMENT_HPP
 #define PRESENTATIONS_PARSED_ELEMENT_HPP
 
+#include <presentations/SpecialCharacters.hpp>
+
 #include <QMap>
 #include <QString>
 #include <QVariant>
@@ -8,7 +10,7 @@
 namespace presentations {
 
 struct ParsedElement {
-    QString type;
+    SpecialCharacterType type;
     QString content;
     QMap<QString, QVariant> attributes;
     int lineNumber{};

@@ -1,4 +1,5 @@
 #include <presentations/CodeThemeConfig.hpp>
+#include <presentations/SpecialCharacters.hpp>
 
 #include <QDebug>
 #include <QJsonArray>
@@ -20,31 +21,32 @@ void CodeThemeConfig::loadFromFile(QFile file) {
 
 bool CodeThemeConfig::isValid() const { return m_isValid; }
 
-QString CodeThemeConfig::specialCharacterFor(const QString& type) const {
-    if (m_specialCharacters.contains(type)) {
-        return m_specialCharacters[type].toString();
+QString CodeThemeConfig::specialCharacterFor(const SpecialCharacterType& type) const {
+    if (m_specialCharacters.contains(toString(type))) {
+        return m_specialCharacters[toString(type)].toString();
     }
     return {};
 }
 
-std::vector<std::pair<QString, QString>> CodeThemeConfig::specialCharacters() const {
-    std::vector<std::pair<QString, QString>> characters;
+std::vector<SpecialCharacter> CodeThemeConfig::specialCharacters() const {
+    // TODO: It looks like fromString() is not converting correctly? Are they the values?
+    std::vector<SpecialCharacter> characters;
     for (const auto& key : m_specialCharacters.keys()) {
-        characters.push_back({key, m_specialCharacters[key].toString()});
+        characters.emplace_back(SpecialCharacter{.type = fromString(key), .specialCharacter = m_specialCharacters[key].toString()});
     }
     return characters;
 }
 
-QJsonObject CodeThemeConfig::defaultAttributesFor(const QString& type) const {
-    if (m_elements.contains(type)) {
-        return m_elements[type].toObject();
+QJsonObject CodeThemeConfig::defaultAttributesFor(const SpecialCharacterType& type) const {
+    if (m_elements.contains(toString(type))) {
+        return m_elements[toString(type)].toObject();
     }
     return {};
 }
 
-bool CodeThemeConfig::isModifierValidFor(const QString& modifier, const QString& type) const {
+bool CodeThemeConfig::isModifierValidFor(const QString& modifier, const SpecialCharacterType& type) const {
     if (m_modifiers.contains(modifier)) {
-        if (const auto appliesTo{m_modifiers[modifier]["appliesTo"].toArray()}; appliesTo.contains(type)) {
+        if (const auto appliesTo{m_modifiers[modifier]["appliesTo"].toArray()}; appliesTo.contains(toString(type))) {
             return true;
         }
     }
