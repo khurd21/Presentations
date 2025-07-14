@@ -15,7 +15,7 @@ QWidget* renderTextElement(const presentations::ParsedElement& element, QWidget*
     auto content{element.content};
 
     // TODO: Add new widget or something for `-`
-    if ("bulletPoint" == element.type) {
+    if (presentations::SpecialCharacterType::BulletPoint == element.type) {
         content = "• " + content;
     }
 
@@ -65,7 +65,8 @@ QWidget* renderTextElement(const presentations::ParsedElement& element, QWidget*
 namespace presentations {
 
 QWidget* ElementRenderer::render(const ParsedElement& element, QWidget* parent) {
-    constexpr std::array textElementTypes{"title", "subtitle", "subsubtitle", "bulletPoint", "text"};
+    using CT = std::decay_t<decltype(element.type)>;
+    constexpr std::array textElementTypes{CT::Title, CT::SubTitle, CT::SubSubTitle, CT::BulletPoint, CT::Text};
     for (const auto& type : textElementTypes) {
         if (type == element.type) {
             return renderTextElement(element, parent);

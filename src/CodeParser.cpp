@@ -1,6 +1,7 @@
 #include <presentations/CodeParser.hpp>
 #include <presentations/CodeThemeConfig.hpp>
 #include <presentations/ParsedElement.hpp>
+#include <presentations/SpecialCharacters.hpp>
 
 #include <QMap>
 #include <QRegularExpression>
@@ -18,8 +19,8 @@ std::vector<ParsedElement> CodeParser::parse(const QString& code) const {
     const auto lines{code.split('\n')};
     QMap<QString, QVariant> activeModifiers;
     bool inModifierBlock{};
-    const auto modifiersStart{m_config.specialCharacterFor("modifierStart")};
-    const auto modifiersEnd{m_config.specialCharacterFor("modifierEnd")};
+    const auto modifiersStart{m_config.specialCharacterFor(SpecialCharacterType::ModifiersStart)};
+    const auto modifiersEnd{m_config.specialCharacterFor(SpecialCharacterType::ModifiersEnd)};
     for (decltype(lines.size()) i{}; i < lines.size(); ++i) {
         const auto line{lines.at(i).trimmed()};
         if (line.isEmpty()) {
@@ -39,7 +40,8 @@ std::vector<ParsedElement> CodeParser::parse(const QString& code) const {
         if (inModifierBlock) {
             if (const auto parts{line.split(':', Qt::SkipEmptyParts)}; parts.size() == 2) {
                 const auto key{parts.at(0).trimmed()};
-                if (const auto value{parts.at(1).trimmed()}; value.contains(QRegularExpression{"^[0-9]+$"})) {
+                static const QRegularExpression expression{"^[0-9]+$"};
+                if (const auto value{parts.at(1).trimmed()}; value.contains(expression)) {
                     activeModifiers.insert(key, value.toInt());
                 } else {
                     activeModifiers.insert(key, value);
@@ -48,7 +50,7 @@ std::vector<ParsedElement> CodeParser::parse(const QString& code) const {
             continue;
         }
 
-        QString type;
+        auto type{SpecialCharacterType::Unknown};
         auto content{line};
         for (const auto& [candidateType, specialCharacter] : m_config.specialCharacters()) {
             if (line.startsWith(specialCharacter)) {
@@ -58,7 +60,7 @@ std::vector<ParsedElement> CodeParser::parse(const QString& code) const {
             }
         }
 
-        if (type.isEmpty()) {
+        if (SpecialCharacterType::Unknown == type) {
             continue;
         }
 

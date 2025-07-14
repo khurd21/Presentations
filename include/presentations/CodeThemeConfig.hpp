@@ -9,15 +9,18 @@
 
 namespace presentations {
 
+enum class SpecialCharacterType;
+struct SpecialCharacter;
+
 class CodeThemeConfig {
   public:
     void loadFromFile(QFile file);
     [[nodiscard]] bool isValid() const;
 
-    [[nodiscard]] QString specialCharacterFor(const QString& type) const;
-    [[nodiscard]] std::vector<std::pair<QString, QString>> specialCharacters() const;
-    [[nodiscard]] QJsonObject defaultAttributesFor(const QString& type) const;
-    [[nodiscard]] bool isModifierValidFor(const QString& modifier, const QString& type) const;
+    [[nodiscard]] QString specialCharacterFor(const SpecialCharacterType& type) const;
+    [[nodiscard]] std::vector<SpecialCharacter> specialCharacters() const;
+    [[nodiscard]] QJsonObject defaultAttributesFor(const SpecialCharacterType& type) const;
+    [[nodiscard]] bool isModifierValidFor(const QString& modifier, const SpecialCharacterType& type) const;
 
   private:
     void parse(const QJsonObject& json);

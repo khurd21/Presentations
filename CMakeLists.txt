@@ -23,6 +23,7 @@ set(sources
         src/CodeThemeConfig.cpp
         src/CodeParser.cpp
         src/ElementRenderer.cpp
+        src/SpecialCharacters.cpp
 )
 
 set(includes
@@ -38,6 +39,7 @@ set(includes
         include/presentations/ParsedElement.hpp
         include/presentations/CodeParser.hpp
         include/presentations/ElementRenderer.hpp
+        include/presentations/SpecialCharacters.hpp
 )
 
 set(ui
