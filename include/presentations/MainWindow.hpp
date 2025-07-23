@@ -24,7 +24,8 @@ class MainWindow final : public QMainWindow {
 
   private slots:
     void onSlideSelection(const QModelIndex& index);
-    void onNewSlideMade(int slideNumber, QWidget* slideWidget) const;
+    void onNewSlideMade(QWidget* slideWidget) const;
+    void onSlideDeleted(int slideNumber) const;
 
   private:
     std::unique_ptr<Ui::MainWindow> m_ui;

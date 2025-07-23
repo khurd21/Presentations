@@ -9,7 +9,7 @@
 #include <QString>
 
 #include <optional>
-#include <unordered_map>
+#include <vector>
 
 namespace presentations {
 class CodeEditor;
@@ -24,18 +24,20 @@ class PresentationManager final : public QObject {
     void setCanvasView(CanvasView* view);
 
   signals:
-    void newSlideMade(int slideNumber, QWidget* slideWidget);
+    void newSlideMade(QWidget* slideWidget);
+    void slideDeleted(int slideNumber);
 
   public slots:
-    void onSlideNumberChanged(int slideNumber);
+    void onSlideNumberChanged(int index);
+    void onDeleteSlide(int index);
     void onMakeNewSlide();
 
   private slots:
     void onCodeChanged();
 
   private:
-    std::unordered_map<int, QString> m_codeEditorText;
-    std::unordered_map<int, QPointer<SlideWidget>> m_slideWidgets;
+    std::vector<QString> m_codeEditorText;
+    std::vector<QPointer<SlideWidget>> m_slideWidgets;
     std::optional<int> m_slideNumber;
 
     CodeThemeConfig m_themeConfig;
