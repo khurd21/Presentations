@@ -23,27 +23,26 @@ void PresentationManager::setCodeEditor(CodeEditor* editor) {
 
 void PresentationManager::setCanvasView(CanvasView* view) { m_primaryCanvasView = view; }
 
-void PresentationManager::onSlideNumberChanged(const int slideNumber) {
-    if (slideNumber < 1 || slideNumber > m_slideWidgets.size() || slideNumber > m_codeEditorText.size()) {
-        qWarning() << "Slide number out of range";
+void PresentationManager::onSlideNumberChanged(const int index) {
+    if (index < 0 || index >= m_slideWidgets.size() || index >= m_codeEditorText.size()) {
+        qWarning() << "Slide index number out of range";
         return;
     }
-    m_slideNumber = slideNumber;
-    m_primaryCanvasView->setSlideWidget(m_slideWidgets.at(slideNumber));
+    m_slideNumber = index;
+    m_primaryCanvasView->setSlideWidget(m_slideWidgets.at(index));
 
     QSignalBlocker blocker{m_primaryCodeEditor};
-    m_primaryCodeEditor->setPlainText(m_codeEditorText.at(slideNumber));
+    m_primaryCodeEditor->setPlainText(m_codeEditorText.at(index));
 }
 
 void PresentationManager::onMakeNewSlide() {
     if (!m_slideNumber.has_value()) {
-        m_slideNumber = 0;
+        m_slideNumber = -1;
     }
     m_slideNumber.value() += 1;
-    const auto slideWidget{new SlideWidget()};
-    m_slideWidgets.insert({m_slideNumber.value(), slideWidget});
-    m_codeEditorText.insert({m_slideNumber.value(), ""});
-    emit newSlideMade(m_slideNumber.value(), slideWidget);
+    m_slideWidgets.emplace_back(new SlideWidget());
+    m_codeEditorText.emplace_back("");
+    emit newSlideMade(m_slideWidgets.back());
 }
 
 void PresentationManager::onCodeChanged() {
@@ -73,6 +72,40 @@ void PresentationManager::onCodeChanged() {
     container->setLayout(layout);
     m_primaryCanvasView->clearSlideContent();
     m_primaryCanvasView->addSlideContent(container);
+}
+
+void PresentationManager::onDeleteSlide(const int index) {
+    if (index < 0 || index >= m_slideWidgets.size()) {
+        qWarning() << "Slide index number out of range";
+        return;
+    }
+
+    if (m_slideNumber.has_value()) {
+        if (m_slideNumber.value() == index) {
+            if (m_slideWidgets.size() == 1) {
+                m_primaryCanvasView->setSlideWidget(nullptr);
+                if (m_primaryCodeEditor) {
+                    QSignalBlocker blocker{m_primaryCodeEditor};
+                    m_primaryCodeEditor->clear();
+                }
+            }
+            m_slideNumber = std::nullopt;
+        }
+    } else if (m_slideNumber.value() > index) {
+        m_slideNumber.value() -= 1;
+    }
+
+    if (m_slideWidgets.at(index)) {
+        m_slideWidgets.at(index)->deleteLater();
+    }
+
+    if (m_slideNumber.has_value() && !m_slideWidgets.empty() && m_primaryCanvasView) {
+        m_primaryCanvasView->setSlideWidget(m_slideWidgets[m_slideNumber.value()]);
+    }
+
+    m_slideWidgets.erase(m_slideWidgets.begin() + index);
+    m_codeEditorText.erase(m_codeEditorText.begin() + index);
+    emit slideDeleted(index);
 }
 
 } // namespace presentations

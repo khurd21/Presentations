@@ -16,14 +16,20 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(std::make_un
 
     connect(m_ui->previewList, &SlidePreviewListView::clicked, this, &MainWindow::onSlideSelection);
     connect(m_ui->graphicsView, &CanvasView::canvasContentChanged, this, [this] { m_ui->previewList->viewport()->update(); });
-    connect(m_ui->addSlideButton, &QPushButton::pressed, &m_presentationManager, &PresentationManager::onMakeNewSlide);
     connect(&m_presentationManager, &PresentationManager::newSlideMade, this, &MainWindow::onNewSlideMade);
+    connect(&m_presentationManager, &PresentationManager::slideDeleted, this, &MainWindow::onSlideDeleted);
+
+    connect(m_ui->previewList, &SlidePreviewListView::slideCreateRequested, &m_presentationManager, &PresentationManager::onMakeNewSlide);
+    connect(m_ui->previewList, &SlidePreviewListView::slideDeleteRequested, &m_presentationManager, &PresentationManager::onDeleteSlide);
+    connect(m_ui->addSlideButton, &QPushButton::pressed, &m_presentationManager, &PresentationManager::onMakeNewSlide);
 }
 
 MainWindow::~MainWindow() = default;
 
-void MainWindow::onNewSlideMade(const int slideNumber, QWidget* slideWidget) const { m_ui->previewList->addSlide(slideNumber, slideWidget); }
+void MainWindow::onNewSlideMade(QWidget* slideWidget) const { m_ui->previewList->addSlide(slideWidget); }
 
-void MainWindow::onSlideSelection(const QModelIndex& index) { m_presentationManager.onSlideNumberChanged(index.row() + 1); }
+void MainWindow::onSlideDeleted(const int slideNumber) const { m_ui->previewList->removeSlide(slideNumber); }
+
+void MainWindow::onSlideSelection(const QModelIndex& index) { m_presentationManager.onSlideNumberChanged(index.row()); }
 
 } // namespace presentations
