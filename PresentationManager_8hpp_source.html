@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('PresentationManager_8hpp_source.html',
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;QString&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span>presentations {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">class </span>CodeEditor;</div>
@@ -136,20 +136,19 @@ $(document).ready(function(){initNavTree('PresentationManager_8hpp_source.html',
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> onCodeChanged();</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// TODO: Clean these up when a slide is deleted.</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::unordered_map&lt;int, QString&gt; m_codeEditorText;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::unordered_map&lt;int, QPointer&lt;SlideWidget&gt;&gt; m_slideWidgets;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::optional&lt;int&gt; m_slideNumber;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="classpresentations_1_1CodeThemeConfig.html">CodeThemeConfig</a> m_themeConfig;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_class" href="classpresentations_1_1CodeParser.html">CodeParser</a> m_codeParser;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    QPointer&lt;CodeEditor&gt; m_primaryCodeEditor;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    QPointer&lt;CanvasView&gt; m_primaryCanvasView;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>} <span class="comment">// namespace presentations</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">// PRESENTATIONS_SLIDE_CODE_MANAGER_HPP</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::vector&lt;QString&gt; m_codeEditorText;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::vector&lt;QPointer&lt;SlideWidget&gt;&gt; m_slideWidgets;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::optional&lt;int&gt; m_slideNumber;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_class" href="classpresentations_1_1CodeThemeConfig.html">CodeThemeConfig</a> m_themeConfig;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="classpresentations_1_1CodeParser.html">CodeParser</a> m_codeParser;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    QPointer&lt;CodeEditor&gt; m_primaryCodeEditor;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    QPointer&lt;CanvasView&gt; m_primaryCanvasView;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>} <span class="comment">// namespace presentations</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif </span><span class="comment">// PRESENTATIONS_SLIDE_CODE_MANAGER_HPP</span></div>
 <div class="ttc" id="aclasspresentations_1_1CanvasView_html"><div class="ttname"><a href="classpresentations_1_1CanvasView.html">presentations::CanvasView</a></div><div class="ttdef"><b>Definition:</b> CanvasView.hpp:12</div></div>
 <div class="ttc" id="aclasspresentations_1_1CodeEditor_html"><div class="ttname"><a href="classpresentations_1_1CodeEditor.html">presentations::CodeEditor</a></div><div class="ttdef"><b>Definition:</b> CodeEditor.hpp:10</div></div>
 <div class="ttc" id="aclasspresentations_1_1CodeParser_html"><div class="ttname"><a href="classpresentations_1_1CodeParser.html">presentations::CodeParser</a></div><div class="ttdef"><b>Definition:</b> CodeParser.hpp:11</div></div>
