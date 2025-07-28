@@ -9,6 +9,10 @@
 
 namespace presentations {
 
+/**
+ * @struct ParsedElement
+ * @brief A decomposed section of the slide content from the code editor.
+ */
 struct ParsedElement {
     SpecialCharacterType type;
     QString content;
