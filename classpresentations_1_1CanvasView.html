@@ -104,6 +104,11 @@ $(document).ready(function(){initNavTree('classpresentations_1_1CanvasView.html'
   <div class="headertitle"><div class="title">presentations::CanvasView Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classpresentations_1_1CanvasView.html" title="The CanvasView class is the main view of the presentation. It displays the slide content for the curr...">CanvasView</a> class is the main view of the presentation. It displays the slide content for the current slide and handles zooming, panning, and touch events to change the position of the view.  
+ <a href="classpresentations_1_1CanvasView.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="CanvasView_8hpp_source.html">CanvasView.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for presentations::CanvasView:</div>
 <div class="dyncontent">
@@ -115,27 +120,29 @@ Inheritance diagram for presentations::CanvasView:</div>
 Signals</h2></td></tr>
 <tr class="memitem:ae125e715dee8369b01b2d624db6bbbef"><td class="memItemLeft" align="right" valign="top"><a id="ae125e715dee8369b01b2d624db6bbbef" name="ae125e715dee8369b01b2d624db6bbbef"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>canvasContentChanged</b> ()</td></tr>
+<tr class="memdesc:ae125e715dee8369b01b2d624db6bbbef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emitted when the slide content has changed. <br /></td></tr>
 <tr class="separator:ae125e715dee8369b01b2d624db6bbbef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aedaec764b1e52cae98a31398e2e7904a"><td class="memItemLeft" align="right" valign="top"><a id="aedaec764b1e52cae98a31398e2e7904a" name="aedaec764b1e52cae98a31398e2e7904a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CanvasView</b> (QWidget *parent=nullptr)</td></tr>
+<tr class="memitem:aedaec764b1e52cae98a31398e2e7904a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpresentations_1_1CanvasView.html#aedaec764b1e52cae98a31398e2e7904a">CanvasView</a> (QWidget *parent=nullptr)</td></tr>
+<tr class="memdesc:aedaec764b1e52cae98a31398e2e7904a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classpresentations_1_1CanvasView.html" title="The CanvasView class is the main view of the presentation. It displays the slide content for the curr...">CanvasView</a> object.  <a href="classpresentations_1_1CanvasView.html#aedaec764b1e52cae98a31398e2e7904a">More...</a><br /></td></tr>
 <tr class="separator:aedaec764b1e52cae98a31398e2e7904a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a78d4290479ca4ab582cf5ba747a528"><td class="memItemLeft" align="right" valign="top"><a id="a3a78d4290479ca4ab582cf5ba747a528" name="a3a78d4290479ca4ab582cf5ba747a528"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clearSlideContent</b> ()</td></tr>
+<tr class="memdesc:a3a78d4290479ca4ab582cf5ba747a528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the slide content. The slide content is the widget that is displayed inside the canvas. <br /></td></tr>
 <tr class="separator:a3a78d4290479ca4ab582cf5ba747a528"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b4462d2426137c05df513ab0d7b8094"><td class="memItemLeft" align="right" valign="top"><a id="a0b4462d2426137c05df513ab0d7b8094" name="a0b4462d2426137c05df513ab0d7b8094"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addSlideContent</b> (QWidget *widget)</td></tr>
+<tr class="memitem:a0b4462d2426137c05df513ab0d7b8094"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpresentations_1_1CanvasView.html#a0b4462d2426137c05df513ab0d7b8094">addSlideContent</a> (QWidget *widget)</td></tr>
+<tr class="memdesc:a0b4462d2426137c05df513ab0d7b8094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the specified widget to the slide content.  <a href="classpresentations_1_1CanvasView.html#a0b4462d2426137c05df513ab0d7b8094">More...</a><br /></td></tr>
 <tr class="separator:a0b4462d2426137c05df513ab0d7b8094"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7ea63443e2744c2c62f3027a60145fe"><td class="memItemLeft" align="right" valign="top"><a id="ae7ea63443e2744c2c62f3027a60145fe" name="ae7ea63443e2744c2c62f3027a60145fe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setSlideWidget</b> (QWidget *slideWidget)</td></tr>
+<tr class="memitem:ae7ea63443e2744c2c62f3027a60145fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpresentations_1_1CanvasView.html#ae7ea63443e2744c2c62f3027a60145fe">setSlideWidget</a> (QWidget *slideWidget)</td></tr>
+<tr class="memdesc:ae7ea63443e2744c2c62f3027a60145fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the slide widget. This is the.  <a href="classpresentations_1_1CanvasView.html#ae7ea63443e2744c2c62f3027a60145fe">More...</a><br /></td></tr>
 <tr class="separator:ae7ea63443e2744c2c62f3027a60145fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d6f61d09f17bf9dc5998d5473cc5f3c"><td class="memItemLeft" align="right" valign="top"><a id="a4d6f61d09f17bf9dc5998d5473cc5f3c" name="a4d6f61d09f17bf9dc5998d5473cc5f3c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>zoomLevel</b> () const</td></tr>
+<tr class="memitem:a4d6f61d09f17bf9dc5998d5473cc5f3c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpresentations_1_1CanvasView.html#a4d6f61d09f17bf9dc5998d5473cc5f3c">zoomLevel</a> () const</td></tr>
+<tr class="memdesc:a4d6f61d09f17bf9dc5998d5473cc5f3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the zoom level.  <a href="classpresentations_1_1CanvasView.html#a4d6f61d09f17bf9dc5998d5473cc5f3c">More...</a><br /></td></tr>
 <tr class="separator:a4d6f61d09f17bf9dc5998d5473cc5f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f529d61d903220e14d0d1ef13dfbf36"><td class="memItemLeft" align="right" valign="top"><a id="a4f529d61d903220e14d0d1ef13dfbf36" name="a4f529d61d903220e14d0d1ef13dfbf36"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setZoomLevel</b> (double zoomLevel)</td></tr>
+<tr class="memitem:a4f529d61d903220e14d0d1ef13dfbf36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpresentations_1_1CanvasView.html#a4f529d61d903220e14d0d1ef13dfbf36">setZoomLevel</a> (double zoomLevel)</td></tr>
+<tr class="memdesc:a4f529d61d903220e14d0d1ef13dfbf36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the zoom level.  <a href="classpresentations_1_1CanvasView.html#a4f529d61d903220e14d0d1ef13dfbf36">More...</a><br /></td></tr>
 <tr class="separator:a4f529d61d903220e14d0d1ef13dfbf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -162,6 +169,142 @@ Properties</h2></td></tr>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>zoomLevel</b></td></tr>
 <tr class="separator:adfaf9e96832f8fca60c2982105e4b197"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >The <a class="el" href="classpresentations_1_1CanvasView.html" title="The CanvasView class is the main view of the presentation. It displays the slide content for the curr...">CanvasView</a> class is the main view of the presentation. It displays the slide content for the current slide and handles zooming, panning, and touch events to change the position of the view. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aedaec764b1e52cae98a31398e2e7904a" name="aedaec764b1e52cae98a31398e2e7904a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedaec764b1e52cae98a31398e2e7904a">&#9670;&#160;</a></span>CanvasView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">presentations::CanvasView::CanvasView </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classpresentations_1_1CanvasView.html" title="The CanvasView class is the main view of the presentation. It displays the slide content for the curr...">CanvasView</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>The parent widget. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0b4462d2426137c05df513ab0d7b8094" name="a0b4462d2426137c05df513ab0d7b8094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b4462d2426137c05df513ab0d7b8094">&#9670;&#160;</a></span>addSlideContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void presentations::CanvasView::addSlideContent </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>widget</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds the specified widget to the slide content. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widget</td><td>The widget to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae7ea63443e2744c2c62f3027a60145fe" name="ae7ea63443e2744c2c62f3027a60145fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7ea63443e2744c2c62f3027a60145fe">&#9670;&#160;</a></span>setSlideWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void presentations::CanvasView::setSlideWidget </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>slideWidget</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the slide widget. This is the. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slideWidget</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4f529d61d903220e14d0d1ef13dfbf36" name="a4f529d61d903220e14d0d1ef13dfbf36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f529d61d903220e14d0d1ef13dfbf36">&#9670;&#160;</a></span>setZoomLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void presentations::CanvasView::setZoomLevel </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zoomLevel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the zoom level. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">zoomLevel</td><td>The zoom level. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4d6f61d09f17bf9dc5998d5473cc5f3c" name="a4d6f61d09f17bf9dc5998d5473cc5f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d6f61d09f17bf9dc5998d5473cc5f3c">&#9670;&#160;</a></span>zoomLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double presentations::CanvasView::zoomLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the zoom level. </p>
+<dl class="section return"><dt>Returns</dt><dd>The zoom level. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/presentations/<a class="el" href="CanvasView_8hpp_source.html">CanvasView.hpp</a></li>
 <li>src/CanvasView.cpp</li>
