@@ -39,6 +39,7 @@ void CanvasView::clearSlideContent() {
                     delete item->widget();
                     delete item;
                 }
+                emit canvasContentChanged();
             }
         }
     }

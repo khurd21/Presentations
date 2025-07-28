@@ -124,7 +124,7 @@ ThemeManager& ThemeManager::instance() {
 }
 
 std::vector<std::string> ThemeManager::getThemes() const {
-    std::vector<std::string> themes;
+    std::vector<std::string> themes(m_themeData.size());
     for (const auto& theme : m_themeData) {
         themes.push_back(theme["name"].toString().toStdString());
     }
@@ -136,8 +136,10 @@ void ThemeManager::setTheme(const std::string& theme) {
         if (themeData["name"].toString().toStdString() == theme) {
             m_theme = theme;
             std::ignore = applyTheme(themeData);
+            return;
         }
     }
+    qWarning() << "A matching theme was not found for:" << theme;
 }
 
 std::string ThemeManager::getTheme() const { return m_theme; }
