@@ -113,6 +113,7 @@ QPalette applyTheme(const QJsonObject& theme) {
 } // namespace
 
 namespace presentations {
+
 ThemeManager::ThemeManager(QObject* parent) : QObject(parent), m_themeData(findThemes()) {
     onColorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &ThemeManager::onColorSchemeChanged);

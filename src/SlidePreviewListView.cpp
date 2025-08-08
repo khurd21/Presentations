@@ -1,13 +1,10 @@
-#include "presentations/ThemeManager.hpp"
-
-#include <QGuiApplication>
+#include <presentations/ShortcutManager.hpp>
+#include <presentations/ShortcutRequest.hpp>
 #include <presentations/SlidePreviewDelegate.hpp>
 #include <presentations/SlidePreviewListView.hpp>
 
 #include <QApplication>
-#include <QKeySequence>
 #include <QPointer>
-#include <QScroller>
 #include <QStandardItem>
 #include <QStyleHints>
 #include <QWheelEvent>
@@ -22,6 +19,7 @@ SlidePreviewListView::SlidePreviewListView(QWidget* parent) : QListView(parent) 
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [this] { setPalette(QApplication::palette()); });
+    connect(&ShortcutManager::instance(), &ShortcutManager::shortcutTriggered, this, &SlidePreviewListView::onShortcutTriggered);
 }
 
 void SlidePreviewListView::addSlide(QWidget* previewWidget) {
@@ -47,31 +45,46 @@ void SlidePreviewListView::removeSlide(int index) {
     viewport()->update();
 }
 
-void SlidePreviewListView::keyPressEvent(QKeyEvent* event) {
-    const auto pressedKey{static_cast<QKeySequence>(event->key() | event->modifiers())};
-    // Delete Request
-    if (pressedKey.matches(QKeySequence::Delete) || (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_D)) {
+void SlidePreviewListView::onShortcutTriggered(const ShortcutRequest shortcut) {
+
+    if (shortcut == ShortcutRequest::DeleteCurrentSlidePage) {
         if (const auto selectedIndexes{selectionModel()->selectedIndexes()}; !selectedIndexes.isEmpty()) {
             if (const auto index{selectedIndexes.first()}; index.isValid() && index.row() >= 0 && index.row() < m_model.rowCount()) {
                 emit slideDeleteRequested(index.row());
             }
         }
-        event->accept();
-        return;
     }
-    // New Slide Request
-    if (pressedKey.matches(QKeySequence::New) || (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_N)) {
+
+    if (shortcut == ShortcutRequest::CreateNewSlidePage) {
         emit slideCreateRequested();
-        event->accept();
-        return;
     }
-    QListView::keyPressEvent(event);
+
+    if (shortcut == ShortcutRequest::PreviousSlide) {
+        if (selectionModel()) {
+            if (const auto currentIndex{selectionModel()->currentIndex()}; currentIndex.isValid()) {
+                const auto currentRow{currentIndex.row()};
+                const auto newRow{currentRow > 0 ? currentRow - 1 : m_model.rowCount() - 1};
+                setCurrentSlide(newRow);
+            }
+        }
+    }
+
+    if (shortcut == ShortcutRequest::NextSlide) {
+        if (selectionModel()) {
+            if (const auto currentIndex{selectionModel()->currentIndex()}; currentIndex.isValid()) {
+                const auto currentRow{currentIndex.row()};
+                const auto newRow{(currentRow + 1) % m_model.rowCount()};
+                setCurrentSlide(newRow);
+            }
+        }
+    }
 }
 
 void SlidePreviewListView::setCurrentSlide(const int index) {
     if (index >= 0 && index < m_model.rowCount()) {
         const auto& modelIndex{m_model.index(index, 0)};
         selectionModel()->select(modelIndex, QItemSelectionModel::ClearAndSelect);
+        selectionModel()->setCurrentIndex(modelIndex, QItemSelectionModel::ClearAndSelect);
         scrollTo(modelIndex);
         emit clicked(modelIndex);
     }

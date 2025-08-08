@@ -7,6 +7,8 @@
 
 namespace presentations {
 
+enum class ShortcutRequest;
+
 class SlidePreviewListView final : public QListView {
     Q_OBJECT
   public:
@@ -49,8 +51,8 @@ class SlidePreviewListView final : public QListView {
      */
     void slideCreateRequested();
 
-  protected:
-    void keyPressEvent(QKeyEvent* event) override;
+  private slots:
+    void onShortcutTriggered(ShortcutRequest shortcut);
 
   private:
     /**
