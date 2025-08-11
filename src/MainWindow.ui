@@ -31,7 +31,7 @@
      <family>.AppleSystemUIFont</family>
     </font>
    </property>
-   <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0" columnstretch="0,0">
+   <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0" columnstretch="0,0">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -57,14 +57,14 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="addSlideButton">
-      <property name="text">
-       <string>Add Slide</string>
+    <item row="1" column="1" rowspan="2">
+     <widget class="presentations::CodeEditor" name="codeEditor">
+      <property name="lineWrapMode">
+       <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
       </property>
      </widget>
     </item>
-    <item row="0" column="0" rowspan="2">
+    <item row="0" column="0" rowspan="3">
      <widget class="presentations::SlidePreviewListView" name="previewList">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -100,13 +100,6 @@ QListView::item {
       </property>
       <property name="resizeMode">
        <enum>QListView::ResizeMode::Adjust</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1" rowspan="2">
-     <widget class="presentations::CodeEditor" name="codeEditor">
-      <property name="lineWrapMode">
-       <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
       </property>
      </widget>
     </item>

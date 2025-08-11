@@ -21,7 +21,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(std::make_un
 
     connect(m_ui->previewList, &SlidePreviewListView::slideCreateRequested, &m_presentationManager, &PresentationManager::onMakeNewSlide);
     connect(m_ui->previewList, &SlidePreviewListView::slideDeleteRequested, &m_presentationManager, &PresentationManager::onDeleteSlide);
-    connect(m_ui->addSlideButton, &QPushButton::pressed, &m_presentationManager, &PresentationManager::onMakeNewSlide);
 }
 
 MainWindow::~MainWindow() = default;
