@@ -18,48 +18,57 @@ ShortcutManager& ShortcutManager::instance() {
 
 bool ShortcutManager::eventFilter(QObject* watched, QEvent* event) {
     if (event->type() == QEvent::KeyPress) {
-        handleKeyPress(dynamic_cast<QKeyEvent*>(event));
-        return true;
+        return handleKeyPress(dynamic_cast<QKeyEvent*>(event));
     }
     return QObject::eventFilter(watched, event);
 }
 
-void ShortcutManager::handleKeyPress(QKeyEvent* event) {
-    handlePreviousSlideShortcut(event);
-    handleNextSlideShortcut(event);
-    handleCreateNewSlidePageShortcut(event);
-    handleDeleteSlideShortcut(event);
+bool ShortcutManager::handleKeyPress(QKeyEvent* event) {
+    bool isHandled{};
+    isHandled |= handlePreviousSlideShortcut(event);
+    isHandled |= handleNextSlideShortcut(event);
+    isHandled |= handleCreateNewSlidePageShortcut(event);
+    isHandled |= handleDeleteSlideShortcut(event);
+    return isHandled;
 }
 
-void ShortcutManager::handlePreviousSlideShortcut(QKeyEvent* event) {
+bool ShortcutManager::handlePreviousSlideShortcut(QKeyEvent* event) {
     if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_K) {
         emit shortcutTriggered(ShortcutRequest::PreviousSlide);
         event->accept();
+        return true;
     }
+    return false;
 }
 
-void ShortcutManager::handleNextSlideShortcut(QKeyEvent* event) {
+bool ShortcutManager::handleNextSlideShortcut(QKeyEvent* event) {
     if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_J) {
         emit shortcutTriggered(ShortcutRequest::NextSlide);
         event->accept();
+        return true;
     }
+    return false;
 }
 
-void ShortcutManager::handleCreateNewSlidePageShortcut(QKeyEvent* event) {
+bool ShortcutManager::handleCreateNewSlidePageShortcut(QKeyEvent* event) {
     const auto pressedKey{static_cast<QKeySequence>(static_cast<int>(event->key() | event->modifiers()))};
     if (pressedKey.matches(QKeySequence::New) || (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_N)) {
         emit shortcutTriggered(ShortcutRequest::CreateNewSlidePage);
         event->accept();
+        return true;
     }
+    return false;
 }
 
-void ShortcutManager::handleDeleteSlideShortcut(QKeyEvent* event) {
+bool ShortcutManager::handleDeleteSlideShortcut(QKeyEvent* event) {
     const auto pressedKey{static_cast<QKeySequence>(static_cast<int>(event->key() | event->modifiers()))};
     if (pressedKey.matches(QKeySequence::Delete) ||
         (event->modifiers() == Qt::ControlModifier && (event->key() == Qt::Key_Delete || event->key() == Qt::Key_D))) {
         emit shortcutTriggered(ShortcutRequest::DeleteCurrentSlidePage);
         event->accept();
+        return true;
     }
+    return false;
 }
 
 } // namespace presentations
