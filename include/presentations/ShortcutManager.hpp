@@ -38,7 +38,7 @@ class ShortcutManager final : public QObject {
     bool eventFilter(QObject* watched, QEvent* event) override;
 
   private:
-    void handleKeyPress(QKeyEvent* event);
+    bool handleKeyPress(QKeyEvent* event);
 
     /**
      * @brief
@@ -46,7 +46,7 @@ class ShortcutManager final : public QObject {
      * If so, the `shortcutTriggered` signal is emitted.
      * @param event The key event. Must not be nullptr.
      */
-    void handlePreviousSlideShortcut(QKeyEvent* event);
+    bool handlePreviousSlideShortcut(QKeyEvent* event);
 
     /**
      * @brief
@@ -54,7 +54,7 @@ class ShortcutManager final : public QObject {
      * If so, the `shortcutTriggered` signal is emitted.
      * @param event The key event. Must not be nullptr.
      */
-    void handleNextSlideShortcut(QKeyEvent* event);
+    bool handleNextSlideShortcut(QKeyEvent* event);
 
     /**
      * @brief
@@ -62,7 +62,7 @@ class ShortcutManager final : public QObject {
      * If so, the `shortcutTriggered` signal is emitted.
      * @param event The key event. Must not be nullptr.
      */
-    void handleCreateNewSlidePageShortcut(QKeyEvent* event);
+    bool handleCreateNewSlidePageShortcut(QKeyEvent* event);
 
     /**
      * @brief
@@ -70,7 +70,7 @@ class ShortcutManager final : public QObject {
      * If so, the `shortcutTriggered` signal is emitted.
      * @param event The key event. Must not be nullptr.
      */
-    void handleDeleteSlideShortcut(QKeyEvent* event);
+    bool handleDeleteSlideShortcut(QKeyEvent* event);
 };
 
 } // namespace presentations
