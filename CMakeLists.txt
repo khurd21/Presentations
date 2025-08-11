@@ -24,6 +24,7 @@ set(sources
         src/CodeParser.cpp
         src/ElementRenderer.cpp
         src/SpecialCharacters.cpp
+        src/ShortcutManager.cpp
 )
 
 set(includes
@@ -40,6 +41,8 @@ set(includes
         include/presentations/CodeParser.hpp
         include/presentations/ElementRenderer.hpp
         include/presentations/SpecialCharacters.hpp
+        include/presentations/ShortcutManager.hpp
+        include/presentations/ShortcutRequest.hpp
 )
 
 set(ui
