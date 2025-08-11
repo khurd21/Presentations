@@ -15,6 +15,7 @@ var hierarchy =
     ] ],
     [ "QObject", null, [
       [ "presentations::PresentationManager", "classpresentations_1_1PresentationManager.html", null ],
+      [ "presentations::ShortcutManager", "classpresentations_1_1ShortcutManager.html", null ],
       [ "presentations::ThemeManager", "classpresentations_1_1ThemeManager.html", null ]
     ] ],
     [ "QPlainTextEdit", null, [

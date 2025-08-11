@@ -8,6 +8,8 @@ var dir_e51f928c6de4527fb86ae66aa0060799 =
     [ "MainWindow.hpp", "MainWindow_8hpp_source.html", null ],
     [ "ParsedElement.hpp", "ParsedElement_8hpp_source.html", null ],
     [ "PresentationManager.hpp", "PresentationManager_8hpp_source.html", null ],
+    [ "ShortcutManager.hpp", "ShortcutManager_8hpp_source.html", null ],
+    [ "ShortcutRequest.hpp", "ShortcutRequest_8hpp_source.html", null ],
     [ "SlidePreviewDelegate.hpp", "SlidePreviewDelegate_8hpp_source.html", null ],
     [ "SlidePreviewListView.hpp", "SlidePreviewListView_8hpp_source.html", null ],
     [ "SlideWidget.hpp", "SlideWidget_8hpp_source.html", null ],

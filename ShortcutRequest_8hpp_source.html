@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Presentations: Class Index</title>
+<title>Presentations: include/presentations/ShortcutRequest.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classes.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('ShortcutRequest_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,35 +95,30 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Class Index</div></div>
+  <div class="headertitle"><div class="title">ShortcutRequest.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="qindex"><a class="qindex" href="#letter_C">C</a>&#160;|&#160;<a class="qindex" href="#letter_E">E</a>&#160;|&#160;<a class="qindex" href="#letter_M">M</a>&#160;|&#160;<a class="qindex" href="#letter_P">P</a>&#160;|&#160;<a class="qindex" href="#letter_S">S</a>&#160;|&#160;<a class="qindex" href="#letter_T">T</a></div>
-<div class="classindex">
-<dl class="classindex even">
-<dt class="alphachar"><a id="letter_C" name="letter_C">C</a></dt>
-<dd><a class="el" href="classpresentations_1_1CanvasView.html">CanvasView</a> (presentations)</dd><dd><a class="el" href="classpresentations_1_1CodeEditor.html">CodeEditor</a> (presentations)</dd><dd><a class="el" href="classpresentations_1_1CodeParser.html">CodeParser</a> (presentations)</dd><dd><a class="el" href="classpresentations_1_1CodeThemeConfig.html">CodeThemeConfig</a> (presentations)</dd></dl>
-<dl class="classindex odd">
-<dt class="alphachar"><a id="letter_E" name="letter_E">E</a></dt>
-<dd><a class="el" href="classpresentations_1_1ElementRenderer.html">ElementRenderer</a> (presentations)</dd></dl>
-<dl class="classindex even">
-<dt class="alphachar"><a id="letter_M" name="letter_M">M</a></dt>
-<dd><a class="el" href="classpresentations_1_1MainWindow.html">MainWindow</a> (presentations)</dd></dl>
-<dl class="classindex odd">
-<dt class="alphachar"><a id="letter_P" name="letter_P">P</a></dt>
-<dd><a class="el" href="structpresentations_1_1ParsedElement.html">ParsedElement</a> (presentations)</dd><dd><a class="el" href="classpresentations_1_1PresentationManager.html">PresentationManager</a> (presentations)</dd></dl>
-<dl class="classindex even">
-<dt class="alphachar"><a id="letter_S" name="letter_S">S</a></dt>
-<dd><a class="el" href="classpresentations_1_1ShortcutManager.html">ShortcutManager</a> (presentations)</dd><dd><a class="el" href="classpresentations_1_1SlidePreviewDelegate.html">SlidePreviewDelegate</a> (presentations)</dd><dd><a class="el" href="classpresentations_1_1SlidePreviewListView.html">SlidePreviewListView</a> (presentations)</dd><dd><a class="el" href="classpresentations_1_1SlideWidget.html">SlideWidget</a> (presentations)</dd><dd><a class="el" href="structpresentations_1_1SpecialCharacter.html">SpecialCharacter</a> (presentations)</dd></dl>
-<dl class="classindex odd">
-<dt class="alphachar"><a id="letter_T" name="letter_T">T</a></dt>
-<dd><a class="el" href="classpresentations_1_1ThemeManager.html">ThemeManager</a> (presentations)</dd></dl>
-</div>
-</div><!-- contents -->
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PRESENTATIONS_SHORTCUT_REQUEST_HPP</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PRESENTATIONS_SHORTCUT_REQUEST_HPP</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span>presentations {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">enum class</span> ShortcutRequest {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    PreviousSlide,</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    NextSlide,</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    CreateNewSlidePage,</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    DeleteCurrentSlidePage,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>} <span class="comment">// namespace presentations</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif </span><span class="comment">// PRESENTATIONS_SHORTCUT_REQUEST_HPP</span></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_e51f928c6de4527fb86ae66aa0060799.html">presentations</a></li><li class="navelem"><b>ShortcutRequest.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
