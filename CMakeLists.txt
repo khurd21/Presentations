@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 project(Presentations LANGUAGES CXX)
 
+if (MSVC)
+    add_compile_options(/WX)
+else ()
+    add_compile_options(-Werror)
+endif ()
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
