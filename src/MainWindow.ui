@@ -59,9 +59,6 @@
     </item>
     <item row="1" column="1" rowspan="2">
      <widget class="presentations::CodeEditor" name="codeEditor">
-      <property name="lineWrapMode">
-       <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
-      </property>
      </widget>
     </item>
     <item row="0" column="0" rowspan="3">

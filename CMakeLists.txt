@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 project(Presentations LANGUAGES CXX)
 
+if (MSVC)
+    add_compile_options(/WX)
+else ()
+    add_compile_options(-Werror)
+endif ()
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -25,6 +31,7 @@ set(sources
         src/ElementRenderer.cpp
         src/SpecialCharacters.cpp
         src/ShortcutManager.cpp
+        src/VimPlainTextEdit.cpp
 )
 
 set(includes
@@ -43,6 +50,7 @@ set(includes
         include/presentations/SpecialCharacters.hpp
         include/presentations/ShortcutManager.hpp
         include/presentations/ShortcutRequest.hpp
+        include/presentations/VimPlainTextEdit.hpp
 )
 
 set(ui
@@ -55,10 +63,6 @@ set(resources
 )
 
 qt_add_executable(Presentations ${sources} ${includes} ${ui} ${resources})
-qt_add_resources(Presentations
-        FILES
-        resources/resources.qrc
-)
 
 target_include_directories(Presentations PRIVATE include)
 

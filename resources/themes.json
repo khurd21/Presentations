@@ -2,7 +2,7 @@
   {
     "name": "Dark",
     "palette": {
-      "window": "#080808",
+      "window": "#1E1E1E",
       "windowText": "#FFFFFF",
       "base": "#1E1E1E",
       "alternateBase": "#2D2D2D",
@@ -18,7 +18,7 @@
   {
     "name": "Light",
     "palette": {
-      "window": "#F5F5F7",
+      "window": "#ADACAC",
       "windowText": "#000000",
       "base": "#ADACAC",
       "alternateBase": "#F0F0F0",
