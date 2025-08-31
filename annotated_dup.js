@@ -14,6 +14,7 @@ var annotated_dup =
       [ "SlidePreviewListView", "classpresentations_1_1SlidePreviewListView.html", "classpresentations_1_1SlidePreviewListView" ],
       [ "SlideWidget", "classpresentations_1_1SlideWidget.html", "classpresentations_1_1SlideWidget" ],
       [ "SpecialCharacter", "structpresentations_1_1SpecialCharacter.html", null ],
-      [ "ThemeManager", "classpresentations_1_1ThemeManager.html", "classpresentations_1_1ThemeManager" ]
+      [ "ThemeManager", "classpresentations_1_1ThemeManager.html", "classpresentations_1_1ThemeManager" ],
+      [ "VimPlainTextEdit", "classpresentations_1_1VimPlainTextEdit.html", null ]
     ] ]
 ];

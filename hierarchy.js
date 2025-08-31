@@ -19,12 +19,13 @@ var hierarchy =
       [ "presentations::ThemeManager", "classpresentations_1_1ThemeManager.html", null ]
     ] ],
     [ "QPlainTextEdit", null, [
-      [ "presentations::CodeEditor", "classpresentations_1_1CodeEditor.html", null ]
+      [ "presentations::VimPlainTextEdit", "classpresentations_1_1VimPlainTextEdit.html", null ]
     ] ],
     [ "QStyledItemDelegate", null, [
       [ "presentations::SlidePreviewDelegate", "classpresentations_1_1SlidePreviewDelegate.html", null ]
     ] ],
     [ "QWidget", null, [
+      [ "presentations::CodeEditor", "classpresentations_1_1CodeEditor.html", null ],
       [ "presentations::SlideWidget", "classpresentations_1_1SlideWidget.html", null ]
     ] ],
     [ "presentations::SpecialCharacter", "structpresentations_1_1SpecialCharacter.html", null ]

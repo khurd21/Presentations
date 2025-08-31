@@ -96,7 +96,10 @@ $(document).ready(function(){initNavTree('classpresentations_1_1CodeEditor.html'
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classpresentations_1_1CodeEditor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">presentations::CodeEditor Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -113,11 +116,44 @@ Inheritance diagram for presentations::CodeEditor:</div>
   <img src="classpresentations_1_1CodeEditor.png" alt=""/>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ab65fe2c2d85313dd890b6f1dd792a3d7"><td class="memItemLeft" align="right" valign="top"><a id="ab65fe2c2d85313dd890b6f1dd792a3d7" name="ab65fe2c2d85313dd890b6f1dd792a3d7"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpresentations_1_1CodeEditor.html#ab65fe2c2d85313dd890b6f1dd792a3d7">Mode</a> { <b>Normal</b>
+, <b>Insert</b>
+, <b>Visual</b>
+ }</td></tr>
+<tr class="memdesc:ab65fe2c2d85313dd890b6f1dd792a3d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the modes the code editor can be in. Mimics vim behavior. <br /></td></tr>
+<tr class="separator:ab65fe2c2d85313dd890b6f1dd792a3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
+Signals</h2></td></tr>
+<tr class="memitem:acc5f6e32ac23dfbf22dbc4a3fa1be7fd"><td class="memItemLeft" align="right" valign="top"><a id="acc5f6e32ac23dfbf22dbc4a3fa1be7fd" name="acc5f6e32ac23dfbf22dbc4a3fa1be7fd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>textChanged</b> ()</td></tr>
+<tr class="separator:acc5f6e32ac23dfbf22dbc4a3fa1be7fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae864d4e222b1cf272ac98eee82e76ac3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpresentations_1_1CodeEditor.html#ae864d4e222b1cf272ac98eee82e76ac3">CodeEditor</a> (QWidget *parent=nullptr)</td></tr>
 <tr class="memdesc:ae864d4e222b1cf272ac98eee82e76ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classpresentations_1_1CodeEditor.html" title="The CodeEditor class is a simple text editor for code. The content of the code editor is used to rend...">CodeEditor</a> object.  <a href="classpresentations_1_1CodeEditor.html#ae864d4e222b1cf272ac98eee82e76ac3">More...</a><br /></td></tr>
 <tr class="separator:ae864d4e222b1cf272ac98eee82e76ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae639c6172fa9cbe0daeac5c939d1d3b6"><td class="memItemLeft" align="right" valign="top"><a id="ae639c6172fa9cbe0daeac5c939d1d3b6" name="ae639c6172fa9cbe0daeac5c939d1d3b6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setMode</b> (<a class="el" href="classpresentations_1_1CodeEditor.html#ab65fe2c2d85313dd890b6f1dd792a3d7">Mode</a> mode)</td></tr>
+<tr class="separator:ae639c6172fa9cbe0daeac5c939d1d3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a077a736603691ef24bbb8745c90c630d"><td class="memItemLeft" align="right" valign="top"><a id="a077a736603691ef24bbb8745c90c630d" name="a077a736603691ef24bbb8745c90c630d"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>toPlainText</b> () const</td></tr>
+<tr class="separator:a077a736603691ef24bbb8745c90c630d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82cd8354ffbf5bf3cfb6bf739eab7fe7"><td class="memItemLeft" align="right" valign="top"><a id="a82cd8354ffbf5bf3cfb6bf739eab7fe7" name="a82cd8354ffbf5bf3cfb6bf739eab7fe7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setPlainText</b> (const QString &amp;text)</td></tr>
+<tr class="separator:a82cd8354ffbf5bf3cfb6bf739eab7fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d232196569b54fb1e2c1aab1f7e52a8"><td class="memItemLeft" align="right" valign="top"><a id="a2d232196569b54fb1e2c1aab1f7e52a8" name="a2d232196569b54fb1e2c1aab1f7e52a8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+<tr class="separator:a2d232196569b54fb1e2c1aab1f7e52a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a7be4959302424c606a75638e102ff1eb"><td class="memItemLeft" align="right" valign="top"><a id="a7be4959302424c606a75638e102ff1eb" name="a7be4959302424c606a75638e102ff1eb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>eventFilter</b> (QObject *watched, QEvent *event) override</td></tr>
+<tr class="separator:a7be4959302424c606a75638e102ff1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="classpresentations_1_1CodeEditor.html" title="The CodeEditor class is a simple text editor for code. The content of the code editor is used to rend...">CodeEditor</a> class is a simple text editor for code. The content of the code editor is used to render the slide content. </p>

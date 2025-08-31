@@ -14,5 +14,6 @@ var dir_e51f928c6de4527fb86ae66aa0060799 =
     [ "SlidePreviewListView.hpp", "SlidePreviewListView_8hpp_source.html", null ],
     [ "SlideWidget.hpp", "SlideWidget_8hpp_source.html", null ],
     [ "SpecialCharacters.hpp", "SpecialCharacters_8hpp_source.html", null ],
-    [ "ThemeManager.hpp", "ThemeManager_8hpp_source.html", null ]
+    [ "ThemeManager.hpp", "ThemeManager_8hpp_source.html", null ],
+    [ "VimPlainTextEdit.hpp", "VimPlainTextEdit_8hpp_source.html", null ]
 ];
